@@ -1,4 +1,4 @@
-package com.personal.pharmacy.services;
+package com.personal.medical.services;
 
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
@@ -16,8 +16,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import com.personal.medical.model.Employee;
 import com.personal.medical.repository.EmployeeRepository;
-import com.personal.medical.services.EmployeeService;
-import com.personal.medical.services.EmployeeServiceImpl;
 
 @SpringBootTest
 class EmployeeServiceImplTest {
