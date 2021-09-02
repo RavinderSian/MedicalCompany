@@ -1,0 +1,9 @@
+package com.personal.medical.repository;
+
+import org.springframework.data.repository.CrudRepository;
+
+import com.personal.medical.model.Patient;
+
+public interface PatientRepository extends CrudRepository<Patient, Long>{
+
+}
