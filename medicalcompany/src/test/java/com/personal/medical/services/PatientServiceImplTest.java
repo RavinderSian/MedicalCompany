@@ -1,11 +1,5 @@
 package com.personal.medical.services;
 
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
-
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Optional;
 
 import org.junit.jupiter.api.Assertions;
@@ -33,79 +27,15 @@ class PatientServiceImplTest {
 		patientService = new PatientServiceImpl(patientRepository);
 	}
 
-	
 	@Test
-	public void test_Save_CallsRepositorySave_WhenCalled(){
-		//Act
-		patientService.save(patientMock);
+	void test_FindById_ReturnsEmptyOptional_WhenCalledWithId5() {
 		//Assert
-		verify(patientRepository, times(1)).save(patientMock);
+		Optional<Patient> patientOptional = patientService.findById(5L);
+		Assertions.assertTrue(patientOptional.isEmpty());
 	}
 	
 	@Test
-	public void test_Save_ReturnsCorrectPatient_WhenGivenPatientMock(){
-		//Arrange
-		when(patientRepository.save(patientMock)).thenReturn(patientMock);
-		//Assert
-		Assertions.assertEquals(patientMock, patientService.save(patientMock));
-	}
-	
-	@Test
-	public void test_Delete_CallsRepositoryDelete_WhenCalled() {
-		//Act
-		patientService.delete(patientMock);
-		//Assert
-		verify(patientRepository, times(1)).delete(patientMock);
-	}
-	
-	@Test
-	public void test_FindAll_CallsRepositoryFindAll_WhenCalled() {
-		//Act
-		patientService.findAll();
-		//Assert
-		verify(patientRepository, times(1)).findAll();
-	}
-	
-	@Test
-	public void test_FindAll_ReturnsListOfSize0_WhenGivenNothing() {
-		//Arrange
-		when(patientRepository.findAll()).thenReturn(new ArrayList<>());
-		//Assert
-		Assertions.assertEquals(0, patientService.findAll().size());
-	}
-	
-	@Test
-	public void test_FindAll_ReturnsListOfSize1_WhenGivenPatientMock() {
-		//Arrange
-		when(patientRepository.findAll()).thenReturn(new ArrayList<>(Arrays.asList(patientMock)));
-		//Assert
-		Assertions.assertEquals(1, patientService.findAll().size());
-	}
-	
-	@Test
-	public void test_FindAll_ReturnsListOfSize2_WhenGivenDuplicatePatientMocks() {
-		//Arrange
-		when(patientRepository.findAll()).thenReturn(new ArrayList<>(Arrays.asList(patientMock, patientMock)));
-		//Assert
-		Assertions.assertEquals(2, patientService.findAll().size());
-	}
-	
-	@Test
-	public void test_FindById_ReturnsPatientMock_WhenCalledWithId1() {
-		//Arrange
-		when(patientRepository.findById(1L)).thenReturn(Optional.of(patientMock));
-		//Assert
-		Assertions.assertEquals(patientService.findById(1L).get(), patientMock);
-	}
-	
-	@Test
-	public void test_FindById_ReturnsEmptyOptional_WhenCalledWithId5() {
-		//Assert
-		Assertions.assertTrue(patientService.findById(5L).isEmpty());
-	}
-	
-	@Test
-	public void test_UpdateFirstName_UpdatesFirstNameCorrectly_WhenGivenStringNewName() {
+	void test_UpdateFirstName_UpdatesFirstNameCorrectly_WhenGivenStringNewName() {
 		//Arrange
 		Patient patient = new Patient();
 		patient.setFirstName("test");
