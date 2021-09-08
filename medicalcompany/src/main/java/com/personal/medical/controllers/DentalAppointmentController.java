@@ -50,6 +50,6 @@ public class DentalAppointmentController implements CrudController<DentalAppoint
 		} 
 		service.save(dentalAppointment);
 		return new ResponseEntity<>(HttpStatus.OK);
-		
+	}
 
 }
