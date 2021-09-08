@@ -11,7 +11,7 @@ import com.personal.medical.repository.DentistRepository;
 @Service
 public class DentistServiceImpl implements DentistService {
 	
-	private DentistRepository repository;
+	private final DentistRepository repository;
 	
 	public DentistServiceImpl(DentistRepository repository) {
 		this.repository = repository;
@@ -34,7 +34,7 @@ public class DentistServiceImpl implements DentistService {
 
 	@Override
 	public Optional<Dentist> findById(Long id) {
-		return repository.findById(1L).isPresent()
+		return repository.findById(id).isPresent()
 		? repository.findById(id)
 		: Optional.empty();
 	}

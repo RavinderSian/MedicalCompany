@@ -1,7 +1,7 @@
 package com.personal.medical.controllers;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Optional;
 
 import org.springframework.http.HttpStatus;
@@ -50,11 +50,9 @@ public class IngredientController implements CrudController<Ingredient, Long> {
 	@Override
 	public ResponseEntity<?> add(Ingredient ingredient, BindingResult bindingResult) {
 		if (bindingResult.hasFieldErrors()) {
-			List<String> errorStrings = new ArrayList<>();
-			bindingResult.getFieldErrors().forEach(objectError -> {
-				errorStrings.add(objectError.getDefaultMessage());
-			});
-			return new ResponseEntity<>(errorStrings.toString(), HttpStatus.BAD_REQUEST);
+			Map<String, String> errors = new HashMap<>();
+			bindingResult.getFieldErrors().forEach(error -> errors.put(error.getField(), error.getDefaultMessage()));
+			return new ResponseEntity<>(errors, HttpStatus.BAD_REQUEST);
 		}
 		Ingredient savedIngredient = ingredientServices.save(ingredient);
 		return new ResponseEntity<>(savedIngredient, HttpStatus.OK);
