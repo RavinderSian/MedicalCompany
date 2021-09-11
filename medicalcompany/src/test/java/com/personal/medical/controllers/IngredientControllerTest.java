@@ -101,7 +101,8 @@ class IngredientControllerTest {
 		
 		this.mockMvc.perform(put("/ingredient/save").contentType(MediaType.APPLICATION_JSON_VALUE).content(requestJson))
 		.andExpect(status().isBadRequest())
-		.andExpect(content().string("[Please enter a valid name]"));
+		.andExpect(content().string("{\"name\":\"Please enter a valid name\"}"));
+
 	}
 	
 	@Test
