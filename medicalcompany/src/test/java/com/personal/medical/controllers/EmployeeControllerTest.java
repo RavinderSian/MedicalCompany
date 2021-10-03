@@ -105,7 +105,7 @@ class EmployeeControllerTest {
 		
 		this.mockMvc.perform(put("/employee/save").contentType(MediaType.APPLICATION_JSON_VALUE).content(requestJson))
 		.andExpect(status().isBadRequest())
-		.andExpect(content().string("[Please enter a valid first name]"));
+		.andExpect(content().string("{\"firstName\":\"Please enter a valid first name\"}"));
 	}
 	
 	@Test
