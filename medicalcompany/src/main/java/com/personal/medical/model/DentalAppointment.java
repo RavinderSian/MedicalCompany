@@ -8,6 +8,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer;
+import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
+
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -23,7 +28,9 @@ public class DentalAppointment {
 	@Column(name = "description")
 	private String description;
 	
-	@Column(name = "booking_time_date")
+    @JsonDeserialize(using = LocalDateTimeDeserializer.class)
+    @JsonSerialize(using = LocalDateTimeSerializer.class)
+	@Column(name = "booking_date")
 	private LocalDateTime bookingDateTime;
 	
 }

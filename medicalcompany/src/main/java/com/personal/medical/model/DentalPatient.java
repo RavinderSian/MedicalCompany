@@ -19,7 +19,7 @@ public class DentalPatient {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long dentistId;
+	private Long id;
 	
 	@NotEmpty(message = "Please enter a valid first name")
 	@Column(name = "first_name")
