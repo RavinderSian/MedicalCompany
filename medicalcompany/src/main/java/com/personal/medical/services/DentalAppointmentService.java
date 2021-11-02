@@ -1,8 +1,8 @@
 package com.personal.medical.services;
 
-import com.personal.medical.model.DentalAppointment;
+import com.personal.medical.model.Appointment;
 
-public interface DentalAppointmentService extends CrudService<DentalAppointment, Long> {
+public interface DentalAppointmentService extends CrudService<Appointment, Long> {
 	
 	
 }

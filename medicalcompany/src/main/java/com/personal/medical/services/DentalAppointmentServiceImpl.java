@@ -5,7 +5,7 @@ import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
-import com.personal.medical.model.DentalAppointment;
+import com.personal.medical.model.Appointment;
 import com.personal.medical.repository.DentalAppointmentRepository;
 
 @Service
@@ -18,22 +18,22 @@ public class DentalAppointmentServiceImpl implements DentalAppointmentService {
 	}
 
 	@Override
-	public DentalAppointment save(DentalAppointment dentalAppointment) {
+	public Appointment save(Appointment dentalAppointment) {
 		return repository.save(dentalAppointment);
 	}
 
 	@Override
-	public void delete(DentalAppointment dentalAppointment) {
+	public void delete(Appointment dentalAppointment) {
 		repository.delete(dentalAppointment);
 	}
 
 	@Override
-	public List<DentalAppointment> findAll() {
-		return (List<DentalAppointment>) repository.findAll();
+	public List<Appointment> findAll() {
+		return (List<Appointment>) repository.findAll();
 	}
 
 	@Override
-	public Optional<DentalAppointment> findById(Long id) {
+	public Optional<Appointment> findById(Long id) {
 		return repository.findById(id).isPresent()
 		? repository.findById(id)
 		: Optional.empty();

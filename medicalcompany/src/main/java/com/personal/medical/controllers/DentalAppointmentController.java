@@ -11,12 +11,12 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.personal.medical.model.DentalAppointment;
+import com.personal.medical.model.Appointment;
 import com.personal.medical.services.DentalAppointmentService;
 
 @RestController
 @RequestMapping("appointments/")
-public class DentalAppointmentController implements CrudController<DentalAppointment, Long>{
+public class DentalAppointmentController implements CrudController<Appointment, Long>{
 
 	private final DentalAppointmentService service;
 	
@@ -41,7 +41,7 @@ public class DentalAppointmentController implements CrudController<DentalAppoint
 	}
 
 	@Override
-	public ResponseEntity<?> add(@Valid DentalAppointment dentalAppointment, BindingResult bindingResult) {
+	public ResponseEntity<?> add(@Valid Appointment dentalAppointment, BindingResult bindingResult) {
 		
 		if (bindingResult.hasFieldErrors()) {
 			Map<String, String> errorMap = new HashMap<>();

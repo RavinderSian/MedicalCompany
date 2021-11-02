@@ -7,11 +7,13 @@ import javax.persistence.Id;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 
-@Entity
 @Data
+@NoArgsConstructor
+@Entity
 @EqualsAndHashCode(callSuper=false)
-public class Dentist extends MedicalProfessional{
+public class Doctor extends MedicalProfessional{
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

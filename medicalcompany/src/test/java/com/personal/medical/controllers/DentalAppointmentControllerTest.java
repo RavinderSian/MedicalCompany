@@ -23,7 +23,7 @@ import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.personal.medical.model.DentalAppointment;
+import com.personal.medical.model.Appointment;
 import com.personal.medical.services.DentalAppointmentService;
 
 @AutoConfigureMockMvc
@@ -51,15 +51,15 @@ class DentalAppointmentControllerTest {
 	@Test
 	void test_FindById_ReturnsCorrectResponseWhenEntityForIdPresent() throws Exception {
 		
-		DentalAppointment appointment = new DentalAppointment();
+		Appointment appointment = new Appointment();
 		appointment.setId(1L);
 		appointment.setDescription("test");
-		appointment.setBookingDateTime(LocalDateTime.of(2020, 1, 2, 5, 6));
+		appointment.setDate(LocalDateTime.of(2020, 1, 2, 5, 6));
 		when(service.findById(1L)).thenReturn(Optional.of(appointment));
 		
 		mockMvc.perform(get("/appointments/1"))
 		.andExpect(status().isOk())
-		.andExpect(content().json("{'id': 1, 'description': 'test', 'bookingDateTime' : '2020-01-02T05:06:00'}"));
+		.andExpect(content().json("{'id': 1, 'description': 'test', 'date' : '2020-01-02T05:06:00'}"));
 	}
 
 	@Test
@@ -70,7 +70,7 @@ class DentalAppointmentControllerTest {
 	
 	@Test
 	void test_Delete_ReturnsCorrectResponseWhenEntityForIdPresent() throws Exception {
-		DentalAppointment appointment = new DentalAppointment();
+		Appointment appointment = new Appointment();
 		appointment.setId(1L);
 		
 		when(service.findById(1L)).thenReturn(Optional.of(appointment));
@@ -87,15 +87,12 @@ class DentalAppointmentControllerTest {
 	@Test
 	void test_Save_ReturnsCorrectResponse_WhenGivenValidEntity() throws Exception {
 		
-		DentalAppointment appointment = new DentalAppointment();
+		Appointment appointment = new Appointment();
 		appointment.setId(1L);
 		appointment.setDescription("test");
-		appointment.setBookingDateTime(LocalDateTime.of(2020, 1, 2, 5, 6));
+		appointment.setDate(LocalDateTime.of(2020, 1, 2, 5, 6));
 		when(service.save(appointment)).thenReturn(appointment);
-		
 	    ObjectMapper mapper = new ObjectMapper();
-	    
-	    System.out.println(mapper.writer().writeValueAsString(appointment));
 		
 	    this.mockMvc.perform(put("/appointments/save").contentType(MediaType.APPLICATION_JSON_VALUE).content(mapper.writer().writeValueAsString(appointment)))
 	    	.andExpect(status().isOk());
