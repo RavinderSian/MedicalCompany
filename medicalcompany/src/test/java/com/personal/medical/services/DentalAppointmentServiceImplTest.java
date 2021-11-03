@@ -11,7 +11,7 @@ import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import com.personal.medical.model.Appointment;
+import com.personal.medical.model.DentalAppointment;
 import com.personal.medical.repository.DentalAppointmentRepository;
 
 @SpringBootTest
@@ -35,7 +35,7 @@ class DentalAppointmentServiceImplTest {
 	@Test
 	void test_FindById_ReturnsEmptyOptional_WhenNoId_Present() {
 		
-		Optional<Appointment> result = Optional.empty();
+		Optional<DentalAppointment> result = Optional.empty();
 		assertThat(result, equalTo(Optional.empty()));
 	}
 

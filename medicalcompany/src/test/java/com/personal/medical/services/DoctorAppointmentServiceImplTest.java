@@ -11,20 +11,20 @@ import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import com.personal.medical.model.DentalAppointment;
-import com.personal.medical.repository.DentistRepository;
+import com.personal.medical.model.DoctorAppointment;
+import com.personal.medical.repository.DoctorAppointmentRepository;
 
 @SpringBootTest
-class DentistServiceImplTest {
+class DoctorAppointmentServiceImplTest {
 
-	private DentistService service;
+	private DoctorAppointmentService service;
 	
 	@Mock
-	private DentistRepository repository;
+	private DoctorAppointmentRepository repository;
 	
 	@BeforeEach
 	void setUp() throws Exception {
-		service = new DentistServiceImpl(repository);
+		service = new DoctorAppointmentServiceImpl(repository);
 	}
 
 	@Test
@@ -35,7 +35,7 @@ class DentistServiceImplTest {
 	@Test
 	void test_FindById_ReturnsEmptyOptional_WhenNoId_Present() {
 		
-		Optional<DentalAppointment> result = Optional.empty();
+		Optional<DoctorAppointment> result = Optional.empty();
 		assertThat(result, equalTo(Optional.empty()));
 	}
 

@@ -11,16 +11,16 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.personal.medical.model.DentalAppointment;
-import com.personal.medical.services.DentalAppointmentService;
+import com.personal.medical.model.DoctorAppointment;
+import com.personal.medical.services.DoctorAppointmentService;
 
 @RestController
-@RequestMapping("dentalappointments/")
-public class DentalAppointmentController implements CrudController<DentalAppointment, Long>{
+@RequestMapping("doctorappointments/")
+public class DoctorAppointmentController implements CrudController<DoctorAppointment, Long>{
 
-	private final DentalAppointmentService service;
+	private final DoctorAppointmentService service;
 	
-	public DentalAppointmentController(DentalAppointmentService service) {
+	public DoctorAppointmentController(DoctorAppointmentService service) {
 		this.service = service;
 	}
 
@@ -41,14 +41,14 @@ public class DentalAppointmentController implements CrudController<DentalAppoint
 	}
 
 	@Override
-	public ResponseEntity<?> add(@Valid DentalAppointment dentalAppointment, BindingResult bindingResult) {
+	public ResponseEntity<?> add(@Valid DoctorAppointment doctorAppointment, BindingResult bindingResult) {
 		
 		if (bindingResult.hasFieldErrors()) {
 			Map<String, String> errorMap = new HashMap<>();
 			bindingResult.getFieldErrors().forEach(error -> errorMap.put(error.getField(), error.getDefaultMessage()));
 			return new ResponseEntity<>(errorMap, HttpStatus.BAD_REQUEST);
 		} 
-		service.save(dentalAppointment);
+		service.save(doctorAppointment);
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
 
