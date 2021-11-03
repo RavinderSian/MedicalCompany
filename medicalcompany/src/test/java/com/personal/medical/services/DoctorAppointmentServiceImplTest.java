@@ -13,23 +13,23 @@ import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import com.personal.medical.model.Dentist;
-import com.personal.medical.repository.DentistRepository;
+import com.personal.medical.model.DoctorAppointment;
+import com.personal.medical.repository.DoctorAppointmentRepository;
 
 @SpringBootTest
-class DentistServiceImplTest {
+class DoctorAppointmentServiceImplTest {
 
-	private DentistService service;
+	private DoctorAppointmentService service;
 	
 	@Mock
-	private DentistRepository repository;
+	private DoctorAppointmentRepository repository;
 	
 	@Mock
-	private Dentist dentistMock;
+	private DoctorAppointment doctorAppointmentMock;
 	
 	@BeforeEach
 	void setUp() throws Exception {
-		service = new DentistServiceImpl(repository);
+		service = new DoctorAppointmentServiceImpl(repository);
 	}
 
 	@Test
@@ -40,9 +40,9 @@ class DentistServiceImplTest {
 	@Test
 	void test_FindById_ReturnsMock_WhenCalledWithId1() {
 		//Arrange
-		when(repository.findById(1L)).thenReturn(Optional.of(dentistMock));
+		when(repository.findById(1L)).thenReturn(Optional.of(doctorAppointmentMock));
 		//Assert
-		Assertions.assertEquals(dentistMock, service.findById(1L).get());
+		Assertions.assertEquals(doctorAppointmentMock, service.findById(1L).get());
 	}
 	
 	@Test
