@@ -1,4 +1,4 @@
-package com.personal.medical.services;
+package com.personal.medical.appointments.services;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.not;
@@ -13,23 +13,23 @@ import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import com.personal.medical.model.DoctorAppointment;
-import com.personal.medical.repository.DoctorAppointmentRepository;
+import com.personal.medical.appointments.model.DentalAppointment;
+import com.personal.medical.appointments.repositories.DentalAppointmentRepository;
 
 @SpringBootTest
-class DoctorAppointmentServiceImplTest {
+class DentalAppointmentServiceImplTest {
 
-	private DoctorAppointmentService service;
+	private DentalAppointmentService service;
 	
 	@Mock
-	private DoctorAppointmentRepository repository;
+	private DentalAppointmentRepository repository;
 	
 	@Mock
-	private DoctorAppointment doctorAppointmentMock;
+	private DentalAppointment dentalAppointmentMock;
 	
 	@BeforeEach
 	void setUp() throws Exception {
-		service = new DoctorAppointmentServiceImpl(repository);
+		service = new DentalAppointmentServiceImpl(repository);
 	}
 
 	@Test
@@ -40,9 +40,9 @@ class DoctorAppointmentServiceImplTest {
 	@Test
 	void test_FindById_ReturnsMock_WhenCalledWithId1() {
 		//Arrange
-		when(repository.findById(1L)).thenReturn(Optional.of(doctorAppointmentMock));
+		when(repository.findById(1L)).thenReturn(Optional.of(dentalAppointmentMock));
 		//Assert
-		Assertions.assertEquals(doctorAppointmentMock, service.findById(1L).get());
+		Assertions.assertEquals(dentalAppointmentMock, service.findById(1L).get());
 	}
 	
 	@Test

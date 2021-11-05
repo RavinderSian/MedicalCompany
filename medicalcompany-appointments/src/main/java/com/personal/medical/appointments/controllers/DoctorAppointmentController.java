@@ -1,4 +1,4 @@
-package com.personal.medical.controllers;
+package com.personal.medical.appointments.controllers;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -11,8 +11,8 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.personal.medical.model.DoctorAppointment;
-import com.personal.medical.services.DoctorAppointmentService;
+import com.personal.medical.appointments.model.DoctorAppointment;
+import com.personal.medical.appointments.services.DoctorAppointmentService;
 
 @RestController
 @RequestMapping("doctorappointments/")
