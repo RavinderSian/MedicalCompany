@@ -1,12 +1,12 @@
-package com.personal.medical.services;
+package com.personal.medical.appointments.services;
 
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
-import com.personal.medical.model.DoctorAppointment;
-import com.personal.medical.repository.DoctorAppointmentRepository;
+import com.personal.medical.appointments.model.DoctorAppointment;
+import com.personal.medical.appointments.repositories.DoctorAppointmentRepository;
 
 @Service
 public class DoctorAppointmentServiceImpl implements DoctorAppointmentService {

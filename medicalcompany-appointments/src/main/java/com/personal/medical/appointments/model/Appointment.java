@@ -1,4 +1,4 @@
-package com.personal.medical.model;
+package com.personal.medical.appointments.model;
 
 import java.time.LocalDateTime;
 

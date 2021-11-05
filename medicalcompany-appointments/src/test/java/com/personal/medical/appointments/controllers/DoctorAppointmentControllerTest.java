@@ -1,4 +1,4 @@
-package com.personal.medical.controllers;
+package com.personal.medical.appointments.controllers;
 
 
 import static org.hamcrest.CoreMatchers.notNullValue;
@@ -23,24 +23,24 @@ import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.personal.medical.model.DentalAppointment;
-import com.personal.medical.services.DentalAppointmentService;
+import com.personal.medical.appointments.model.DoctorAppointment;
+import com.personal.medical.appointments.services.DoctorAppointmentService;
 
 @AutoConfigureMockMvc
-@WebMvcTest(DentalAppointmentController.class)
-class DentalAppointmentControllerTest {
+@WebMvcTest(DoctorAppointmentController.class)
+class DoctorAppointmentControllerTest {
 
 	@Autowired
 	private MockMvc mockMvc;
 	
-	private DentalAppointmentController controller;
+	private DoctorAppointmentController controller;
 	
 	@MockBean
-	private DentalAppointmentService service;
+	private DoctorAppointmentService service;
 	
 	@BeforeEach
 	void setUp() throws Exception {
-		this.controller = new DentalAppointmentController(service);
+		this.controller = new DoctorAppointmentController(service);
 	}
 
 	@Test
@@ -51,50 +51,50 @@ class DentalAppointmentControllerTest {
 	@Test
 	void test_FindById_ReturnsCorrectResponseWhenEntityForIdPresent() throws Exception {
 		
-		DentalAppointment appointment = new DentalAppointment();
+		DoctorAppointment appointment = new DoctorAppointment();
 		appointment.setId(1L);
 		appointment.setDescription("test");
 		appointment.setDate(LocalDateTime.of(2020, 1, 2, 5, 6));
 		when(service.findById(1L)).thenReturn(Optional.of(appointment));
 		
-		mockMvc.perform(get("/dentalappointments/1"))
+		mockMvc.perform(get("/doctorappointments/1"))
 		.andExpect(status().isOk())
 		.andExpect(content().json("{'id': 1, 'description': 'test', 'date' : '2020-01-02T05:06:00'}"));
 	}
 
 	@Test
 	void test_FindById_ReturnsCorrectResponseWithNoEntityForIdPresent() throws Exception {
-		mockMvc.perform(get("/dentalappointments/10"))
+		mockMvc.perform(get("/doctorappointments/10"))
 		.andExpect(status().isNotFound());
 	}
 	
 	@Test
 	void test_Delete_ReturnsCorrectResponseWhenEntityForIdPresent() throws Exception {
-		DentalAppointment appointment = new DentalAppointment();
+		DoctorAppointment appointment = new DoctorAppointment();
 		appointment.setId(1L);
 		
 		when(service.findById(1L)).thenReturn(Optional.of(appointment));
-		mockMvc.perform(delete("/dentalappointments/delete/1"))
+		mockMvc.perform(delete("/doctorappointments/delete/1"))
 		.andExpect(status().isOk());
 	}
 	
 	@Test
 	void test_Delete_ReturnsCorrectResponseWithNoEntityForIdPresent() throws Exception {
-		mockMvc.perform(delete("/dentalappointments/delete/10"))
+		mockMvc.perform(delete("/doctorappointments/delete/10"))
 		.andExpect(status().isNotFound());
 	}
 	
 	@Test
 	void test_Save_ReturnsCorrectResponse_WhenGivenValidEntity() throws Exception {
 		
-		DentalAppointment appointment = new DentalAppointment();
+		DoctorAppointment appointment = new DoctorAppointment();
 		appointment.setId(1L);
 		appointment.setDescription("test");
 		appointment.setDate(LocalDateTime.of(2020, 1, 2, 5, 6));
 		when(service.save(appointment)).thenReturn(appointment);
 	    ObjectMapper mapper = new ObjectMapper();
 		
-	    this.mockMvc.perform(put("/dentalappointments/save").contentType(MediaType.APPLICATION_JSON_VALUE).content(mapper.writer().writeValueAsString(appointment)))
+	    this.mockMvc.perform(put("/doctorappointments/save").contentType(MediaType.APPLICATION_JSON_VALUE).content(mapper.writer().writeValueAsString(appointment)))
 	    	.andExpect(status().isOk());
 	}
 }
