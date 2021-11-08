@@ -91,6 +91,8 @@ class DoctorAppointmentControllerTest {
 		appointment.setId(1L);
 		appointment.setDescription("test");
 		appointment.setDate(LocalDateTime.of(2020, 1, 2, 5, 6));
+		appointment.setDoctorId(1L);
+		appointment.setPatientId(1L);
 		when(service.save(appointment)).thenReturn(appointment);
 	    ObjectMapper mapper = new ObjectMapper();
 		

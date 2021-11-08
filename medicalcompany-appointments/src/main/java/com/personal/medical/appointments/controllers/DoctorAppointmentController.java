@@ -3,8 +3,6 @@ package com.personal.medical.appointments.controllers;
 import java.util.HashMap;
 import java.util.Map;
 
-import javax.validation.Valid;
-
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
@@ -41,7 +39,7 @@ public class DoctorAppointmentController implements CrudController<DoctorAppoint
 	}
 
 	@Override
-	public ResponseEntity<?> add(@Valid DoctorAppointment doctorAppointment, BindingResult bindingResult) {
+	public ResponseEntity<?> add(DoctorAppointment doctorAppointment, BindingResult bindingResult) {
 		
 		if (bindingResult.hasFieldErrors()) {
 			Map<String, String> errorMap = new HashMap<>();

@@ -19,5 +19,6 @@ public interface CrudController<T, ID> {
 	ResponseEntity<?> deleteById(@PathVariable ID id);
 	
 	@PutMapping("save")
-	ResponseEntity<?> add(@RequestBody @Valid T t, BindingResult bindingResult); //@Valid is needed to process error messages
+	ResponseEntity<?> add(@RequestBody @Valid T t,  BindingResult bindingResult);
+	
 }
