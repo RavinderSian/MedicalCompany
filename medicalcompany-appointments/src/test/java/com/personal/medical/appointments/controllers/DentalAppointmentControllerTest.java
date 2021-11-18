@@ -150,7 +150,7 @@ class DentalAppointmentControllerTest {
 		          .andRespond(withStatus(HttpStatus.NOT_FOUND)
 		        );
 	    
-	    this.mockMvc.perform(put("/dentalappointments/save").contentType(MediaType.APPLICATION_JSON_VALUE).content(mapper.writer().writeValueAsString(appointment)))
+	    mockMvc.perform(put("/dentalappointments/save").contentType(MediaType.APPLICATION_JSON_VALUE).content(mapper.writer().writeValueAsString(appointment)))
 	    	.andExpect(status().isNotFound())
 	    	.andExpect(content().string("Patient id not found"));
 	    mockServer.verify();
