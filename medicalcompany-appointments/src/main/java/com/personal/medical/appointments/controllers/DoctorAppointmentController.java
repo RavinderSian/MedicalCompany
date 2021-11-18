@@ -3,11 +3,17 @@ package com.personal.medical.appointments.controllers;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.HttpClientErrorException;
+import org.springframework.web.client.RestTemplate;
 
 import com.personal.medical.appointments.model.DoctorAppointment;
 import com.personal.medical.appointments.services.DoctorAppointmentService;
@@ -18,8 +24,16 @@ public class DoctorAppointmentController implements CrudController<DoctorAppoint
 
 	private final DoctorAppointmentService service;
 	
+	@Autowired
+	private RestTemplate restTemplate;
+	
 	public DoctorAppointmentController(DoctorAppointmentService service) {
 		this.service = service;
+	}
+	
+	@Bean
+	public RestTemplate restTemplate() {
+	    return new RestTemplate();
 	}
 
 	@Override
@@ -45,7 +59,20 @@ public class DoctorAppointmentController implements CrudController<DoctorAppoint
 			Map<String, String> errorMap = new HashMap<>();
 			bindingResult.getFieldErrors().forEach(error -> errorMap.put(error.getField(), error.getDefaultMessage()));
 			return new ResponseEntity<>(errorMap, HttpStatus.BAD_REQUEST);
-		} 
+		}
+		
+		try {
+			restTemplate.exchange("http://localhost:8080/patient/" + doctorAppointment.getPatientId(), HttpMethod.GET, new HttpEntity<>(null, null), String.class);
+		} catch(HttpClientErrorException.NotFound httpClientErrorException) {
+			return new ResponseEntity<>("Patient id not found", httpClientErrorException.getStatusCode());
+		}
+		
+		try {
+			restTemplate.exchange("http://localhost:8080/doctor/" + doctorAppointment.getDoctorId(), HttpMethod.GET, new HttpEntity<>(null, null), String.class);
+		} catch(HttpClientErrorException.NotFound httpClientErrorException) {
+			return new ResponseEntity<>("Doctor id not found", httpClientErrorException.getStatusCode());
+		}
+		
 		service.save(doctorAppointment);
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
