@@ -35,12 +35,15 @@ class DoctorAppointmentControllerTest {
 	
 	private DoctorAppointmentController controller;
 	
+	private ObjectMapper mapper;
+	
 	@MockBean
 	private DoctorAppointmentService service;
 	
 	@BeforeEach
 	void setUp() throws Exception {
 		this.controller = new DoctorAppointmentController(service);
+	    mapper = new ObjectMapper();
 	}
 
 	@Test
@@ -91,10 +94,30 @@ class DoctorAppointmentControllerTest {
 		appointment.setId(1L);
 		appointment.setDescription("test");
 		appointment.setDate(LocalDateTime.of(2020, 1, 2, 5, 6));
+		appointment.setDoctorId(1L);
+		appointment.setPatientId(1L);
 		when(service.save(appointment)).thenReturn(appointment);
+		when(service.checkIfPatientOrDoctorExists(appointment)).thenReturn(true);
 	    ObjectMapper mapper = new ObjectMapper();
-		
-	    this.mockMvc.perform(put("/doctorappointments/save").contentType(MediaType.APPLICATION_JSON_VALUE).content(mapper.writer().writeValueAsString(appointment)))
+	    
+	    mockMvc.perform(put("/doctorappointments/save").contentType(MediaType.APPLICATION_JSON_VALUE).content(mapper.writer().writeValueAsString(appointment)))
 	    	.andExpect(status().isOk());
 	}
+	
+	@Test
+	void test_Save_ReturnsCorrectResponse_WhenPatientOrDoctorDoesNotExist() throws Exception {
+		
+		DoctorAppointment appointment = new DoctorAppointment();
+		appointment.setId(1L);
+		appointment.setDescription("test");
+		appointment.setDate(LocalDateTime.of(2020, 1, 2, 5, 6));
+		appointment.setDoctorId(1L);
+		appointment.setPatientId(1L);
+		when(service.save(appointment)).thenReturn(appointment);
+		when(service.checkIfPatientOrDoctorExists(appointment)).thenReturn(false);
+	    
+	    mockMvc.perform(put("/doctorappointments/save").contentType(MediaType.APPLICATION_JSON_VALUE).content(mapper.writer().writeValueAsString(appointment)))
+	    	.andExpect(status().isNotFound());
+	}
+	
 }

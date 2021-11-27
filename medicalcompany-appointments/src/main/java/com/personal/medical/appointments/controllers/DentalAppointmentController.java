@@ -3,11 +3,11 @@ package com.personal.medical.appointments.controllers;
 import java.util.HashMap;
 import java.util.Map;
 
-import javax.validation.Valid;
-
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -19,7 +19,7 @@ import com.personal.medical.appointments.services.DentalAppointmentService;
 public class DentalAppointmentController implements CrudController<DentalAppointment, Long>{
 
 	private final DentalAppointmentService service;
-	
+
 	public DentalAppointmentController(DentalAppointmentService service) {
 		this.service = service;
 	}
@@ -41,14 +41,35 @@ public class DentalAppointmentController implements CrudController<DentalAppoint
 	}
 
 	@Override
-	public ResponseEntity<?> add(@Valid DentalAppointment dentalAppointment, BindingResult bindingResult) {
+	public ResponseEntity<?> add(DentalAppointment dentalAppointment, BindingResult bindingResult) {
+		
+		if(!service.checkIfPatientOrDentistExists(dentalAppointment)) {
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		}
 		
 		if (bindingResult.hasFieldErrors()) {
 			Map<String, String> errorMap = new HashMap<>();
 			bindingResult.getFieldErrors().forEach(error -> errorMap.put(error.getField(), error.getDefaultMessage()));
 			return new ResponseEntity<>(errorMap, HttpStatus.BAD_REQUEST);
-		} 
+		}
+		
 		service.save(dentalAppointment);
+		return new ResponseEntity<>(HttpStatus.OK);
+	}
+	
+	@DeleteMapping("delete/dentist/{dentistId}")
+	public ResponseEntity<?> deleteAppointmentsForDentist(@PathVariable Long dentistId){
+		
+		service.deleteAppointmentsForGivenDentistId(dentistId);
+		
+		return new ResponseEntity<>(HttpStatus.OK);
+	}
+	
+	@DeleteMapping("delete/patient/{patientId}")
+	public ResponseEntity<?> deleteAppointmentsForPatient(@PathVariable Long patientId){
+		
+		service.deleteAppointmentsForGivenPatientId(patientId);
+		
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
 

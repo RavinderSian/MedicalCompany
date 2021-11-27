@@ -31,5 +31,5 @@ public class DentalHygienist {
 	
 	@Column(name = "date_joined")
 	private LocalDateTime joinDate;
-
+	
 }
