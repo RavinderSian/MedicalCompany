@@ -60,7 +60,7 @@ public class DentalAppointmentServiceImpl implements DentalAppointmentService {
 	public boolean checkIfPatientOrDentistExists(DentalAppointment dentalAppointment) {
 		
 		try {
-			restTemplate.exchange("http://localhost:8080/patient/" + dentalAppointment.getPatientId(), HttpMethod.GET, new HttpEntity<>(null, null), String.class);
+			restTemplate.exchange("http://localhost:8080/dentalpatient/" + dentalAppointment.getPatientId(), HttpMethod.GET, new HttpEntity<>(null, null), String.class);
 		} catch(HttpClientErrorException.NotFound httpClientErrorException) {
 			return false;
 		}

@@ -73,7 +73,7 @@ class DentalAppointmentServiceImplTest {
 		dentalAppointmentMock.setPatientId(5L);
 		
 		mockServer.expect(ExpectedCount.once(), 
-		          requestTo("http://localhost:8080/patient/" + dentalAppointmentMock.getPatientId()))
+		          requestTo("http://localhost:8080/dentalpatient/" + dentalAppointmentMock.getPatientId()))
 		          .andExpect(method(HttpMethod.GET))
 		          .andRespond(withStatus(HttpStatus.NOT_FOUND)
 		        );
@@ -93,7 +93,7 @@ class DentalAppointmentServiceImplTest {
 
 		
 		mockServer.expect(ExpectedCount.once(), 
-		          requestTo("http://localhost:8080/patient/" + dentalAppointmentMock.getPatientId()))
+		          requestTo("http://localhost:8080/dentalpatient/" + dentalAppointmentMock.getPatientId()))
 		          .andExpect(method(HttpMethod.GET))
 		          .andRespond(withStatus(HttpStatus.OK)
 		        );
@@ -117,7 +117,7 @@ class DentalAppointmentServiceImplTest {
 		dentalAppointmentMock.setDentistId(1L);
 		
 		mockServer.expect(ExpectedCount.once(), 
-		          requestTo("http://localhost:8080/patient/" + dentalAppointmentMock.getPatientId()))
+		          requestTo("http://localhost:8080/dentalpatient/" + dentalAppointmentMock.getPatientId()))
 		          .andExpect(method(HttpMethod.GET))
 		          .andRespond(withStatus(HttpStatus.OK)
 		        );
