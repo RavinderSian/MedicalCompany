@@ -3,18 +3,24 @@ package com.personal.medical.services;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpMethod;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
 
 import com.personal.medical.model.Patient;
 import com.personal.medical.repository.PatientRepository;
 
-import lombok.AllArgsConstructor;
-
 @Service
-@AllArgsConstructor
 public class PatientServiceImpl implements PatientService {
 
 	private final PatientRepository patientRepository;
+	private final RestTemplate restTemplate;
+	
+	public PatientServiceImpl(PatientRepository patientRepository, RestTemplate restTemplate) {
+		this.patientRepository = patientRepository;
+		this.restTemplate = restTemplate;
+	}
 	
 	@Override
 	public Patient save(Patient patient) {
@@ -23,6 +29,10 @@ public class PatientServiceImpl implements PatientService {
 
 	@Override
 	public void delete(Patient patient) {
+		
+		restTemplate.exchange("http://localhost:8081/doctorappointments/delete/patient/" + patient.getPatientId(), HttpMethod.DELETE, 
+				new HttpEntity<>(null, null), String.class);
+		
 		patient.getPrescriptions().forEach(prescription -> prescription.setPatient(null));
 		patientRepository.delete(patient);
 	}

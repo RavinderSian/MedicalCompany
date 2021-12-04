@@ -22,13 +22,13 @@ import org.springframework.test.web.client.ExpectedCount;
 import org.springframework.test.web.client.MockRestServiceServer;
 import org.springframework.web.client.RestTemplate;
 
-import com.personal.medical.model.DentalPatient;
-import com.personal.medical.repository.DentalPatientRepository;
+import com.personal.medical.model.Doctor;
+import com.personal.medical.repository.DoctorRepository;
 
 @SpringBootTest
-class DentalPatientServiceImplTest {
+class DoctorServiceImplTest {
 
-	private DentalPatientService service;
+	private DoctorService service;
 	
 	@Autowired
 	private RestTemplate restTemplate;
@@ -36,15 +36,15 @@ class DentalPatientServiceImplTest {
 	private MockRestServiceServer mockServer;
 	
 	@Mock
-	private DentalPatientRepository repository;
+	private DoctorRepository repository;
 	
 	@Mock
-	private DentalPatient dentalPatientMock;
+	private Doctor doctorMock;
 	
 	@BeforeEach
 	void setUp() throws Exception {
-		service = new DentalPatientServiceImpl(repository, restTemplate);
-		mockServer = MockRestServiceServer.createServer(restTemplate);
+		service = new DoctorServiceImpl(repository, restTemplate);
+		mockServer = MockRestServiceServer.createServer(restTemplate); 
 	}
 
 	@Test
@@ -53,11 +53,16 @@ class DentalPatientServiceImplTest {
 	}
 	
 	@Test
+	void test_RestTemplateNotNull() {
+		assertThat(restTemplate, not(equalTo(null)));
+	}
+	
+	@Test
 	void test_FindById_ReturnsMock_WhenCalledWithId1() {
 		//Arrange
-		when(repository.findById(1L)).thenReturn(Optional.of(dentalPatientMock));
+		when(repository.findById(1L)).thenReturn(Optional.of(doctorMock));
 		//Assert
-		Assertions.assertEquals(dentalPatientMock, service.findById(1L).get());
+		Assertions.assertEquals(doctorMock, service.findById(1L).get());
 	}
 	
 	@Test
@@ -67,18 +72,18 @@ class DentalPatientServiceImplTest {
 	}
 	
 	@Test
-	void test_Delete_CallsDentalAppointmentsEndpointSuccessfully_WhenGivenMockDentalPatient() {
+	void test_Delete_CallsDoctorAppointmentsEndpointSuccessfully_WhenGivenMockDoctor() {
 		
-		DentalPatient dentalPatient = new DentalPatient();
-		dentalPatient.setId(1L);
+		Doctor doctor = new Doctor();
+		doctor.setId(1L);
 		
 		mockServer.expect(ExpectedCount.once(), 
-		          requestTo("http://localhost:8081/dentalappointments/delete/patient/" + dentalPatient.getId()))
+		          requestTo("http://localhost:8081/doctorappointments/delete/doctor/" + doctor.getId()))
 		          .andExpect(method(HttpMethod.DELETE))
 		          .andRespond(withStatus(HttpStatus.OK)
 		        );
 		
-		service.delete(dentalPatient);
+		service.delete(doctor);
 		mockServer.verify();
 
 	}

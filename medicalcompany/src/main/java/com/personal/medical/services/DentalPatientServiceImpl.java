@@ -3,7 +3,10 @@ package com.personal.medical.services;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpMethod;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
 
 import com.personal.medical.model.DentalPatient;
 import com.personal.medical.repository.DentalPatientRepository;
@@ -12,9 +15,11 @@ import com.personal.medical.repository.DentalPatientRepository;
 public class DentalPatientServiceImpl implements DentalPatientService {
 	
 	private final DentalPatientRepository repository;
+	private final RestTemplate restTemplate;
 	
-	public DentalPatientServiceImpl(DentalPatientRepository repository) {
+	public DentalPatientServiceImpl(DentalPatientRepository repository, RestTemplate restTemplate) {
 		this.repository = repository;
+		this.restTemplate = restTemplate;
 	}
 
 	@Override
@@ -24,6 +29,10 @@ public class DentalPatientServiceImpl implements DentalPatientService {
 
 	@Override
 	public void delete(DentalPatient dentalPatient) {
+		
+		restTemplate.exchange("http://localhost:8081/dentalappointments/delete/patient/" + dentalPatient.getId(), HttpMethod.DELETE, 
+				new HttpEntity<>(null, null), String.class);
+		
 		repository.delete(dentalPatient);
 	}
 

@@ -31,7 +31,7 @@ public class DentistServiceImpl implements DentistService {
 	@Override
 	public void delete(Dentist dentist) {
 		
-		restTemplate.exchange("localhost:8081/delete/dentist/" + dentist.getId(), HttpMethod.DELETE, 
+		restTemplate.exchange("http://localhost:8081/dentalappointments/delete/dentist/" + dentist.getId(), HttpMethod.DELETE, 
 				new HttpEntity<>(null, null), String.class);
 		
 		repository.delete(dentist);
