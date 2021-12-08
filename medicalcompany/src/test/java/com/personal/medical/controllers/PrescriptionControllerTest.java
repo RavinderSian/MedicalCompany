@@ -3,7 +3,7 @@ package com.personal.medical.controllers;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -75,7 +75,7 @@ class PrescriptionControllerTest {
 	    ObjectWriter ow = mapper.writer().withDefaultPrettyPrinter();
 	    String requestJson = ow.writeValueAsString(prescription);
 		
-		this.mockMvc.perform(post("/prescription/save").contentType(MediaType.APPLICATION_JSON_VALUE).content(requestJson))
+		this.mockMvc.perform(put("/prescription/save").contentType(MediaType.APPLICATION_JSON_VALUE).content(requestJson))
 		.andExpect(status().isOk())
 		.andExpect(content().json("{'prescriptionId': 1}")); 
 	}
