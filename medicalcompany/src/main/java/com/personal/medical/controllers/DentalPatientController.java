@@ -37,7 +37,9 @@ public class DentalPatientController implements CrudController<DentalPatient, Lo
 		if (service.findById(id).isPresent()) {
 			service.delete(service.findById(id).get());
 			return new ResponseEntity<>(HttpStatus.OK);
-		} return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		}
+		
+		return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 	}
 
 	@Override
@@ -47,6 +49,7 @@ public class DentalPatientController implements CrudController<DentalPatient, Lo
 			bindingResult.getFieldErrors().forEach(error -> errors.put(error.getField(), error.getDefaultMessage()));
 			return new ResponseEntity<>(errors, HttpStatus.BAD_REQUEST);
 		}
+		service.save(dentalPatient); 
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
 	
