@@ -85,11 +85,10 @@ class DentalPatientControllerTest {
 	}
 	
 	@Test
-	void test_Delete_ReturnsCorrectResponseWhenAppointmentsServiceIsDown() throws Exception {
+	void test_Delete_ReturnsCorrectResponse_WhenAppointmentsServiceIsDown() throws Exception {
 		DentalPatient dentalPatient = new DentalPatient();
 		dentalPatient.setId(1L);
 		when(service.findById(1L)).thenReturn(Optional.of(dentalPatient));
-		
 		doThrow(ResourceAccessException.class).when(service).delete(dentalPatient);
 		
 		mockMvc.perform(delete("/dentalpatient/delete/1"))
