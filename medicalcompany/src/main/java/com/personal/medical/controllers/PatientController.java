@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.ResourceAccessException;
 
 import com.personal.medical.model.Patient;
 import com.personal.medical.services.PatientService;
@@ -51,11 +52,15 @@ public class PatientController implements CrudController<Patient, Long> {
 	@Override
 	public ResponseEntity<?> deleteById(Long id){
 		Optional<Patient> patientOptional = patientService.findById(id);
+		
 		if (patientOptional.isEmpty()) {
-			log.info("Id not present in database");
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
-		patientService.delete(patientOptional.get());
+		try {
+			patientService.delete(patientOptional.get());
+		}catch(ResourceAccessException exception) {
+			return new ResponseEntity<>(HttpStatus.SERVICE_UNAVAILABLE);
+		}
 		return new ResponseEntity<>("Patient deleted", HttpStatus.OK);
 	}
 	

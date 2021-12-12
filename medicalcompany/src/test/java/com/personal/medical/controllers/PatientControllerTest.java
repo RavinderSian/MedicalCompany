@@ -1,7 +1,9 @@
 package com.personal.medical.controllers;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.Mockito.doThrow;
 import static org.mockito.Mockito.when;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.patch;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
@@ -18,6 +20,7 @@ import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.web.client.ResourceAccessException;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
@@ -58,6 +61,33 @@ class PatientControllerTest {
 		this.mockMvc.perform(get("/patient/1")).andDo(print())
 		.andExpect(status().isOk())
 		.andExpect(content().json("{'patientId': 1, 'firstName': 'rav'}")); 
+	}
+	
+	@Test
+	void test_Delete_ReturnsCorrectResponseWhenEntityForIdPresent() throws Exception {
+		Patient patient = new Patient();
+		patient.setPatientId(1L);
+		
+		when(patientService.findById(1L)).thenReturn(Optional.of(patient));
+		mockMvc.perform(delete("/patient/delete/1"))
+		.andExpect(status().isOk());
+	}
+	
+	@Test
+	void test_Delete_ReturnsCorrectResponseWithNoEntityForIdPresent() throws Exception {
+		mockMvc.perform(delete("/patient/delete/10"))
+		.andExpect(status().isNotFound());
+	}
+	
+	@Test
+	void test_Delete_ReturnsCorrectResponse_WhenAppointmentsServiceIsDown() throws Exception {
+		Patient patient = new Patient();
+		patient.setPatientId(1L);
+		when(patientService.findById(1L)).thenReturn(Optional.of(patient));
+		doThrow(ResourceAccessException.class).when(patientService).delete(patient);
+		
+		mockMvc.perform(delete("/patient/delete/1"))
+		.andExpect(status().isServiceUnavailable());
 	}
 	
 	@Test
