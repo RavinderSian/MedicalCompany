@@ -2,6 +2,7 @@ package com.personal.medical.controllers;
 
 import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.hamcrest.MatcherAssert.assertThat;
+import static org.mockito.Mockito.doThrow;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -19,6 +20,7 @@ import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.web.client.ResourceAccessException;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.personal.medical.model.Dentist;
@@ -80,6 +82,18 @@ class DentistControllerTest {
 	void test_Delete_ReturnsCorrectResponseWithNoEntityForIdPresent() throws Exception {
 		mockMvc.perform(delete("/dentist/delete/10"))
 		.andExpect(status().isNotFound());
+	}
+	
+	@Test
+	void test_Delete_ReturnsCorrectResponseWhenAppointmentsServiceIsDown() throws Exception {
+		Dentist dentist = new Dentist();
+		dentist.setId(1L);
+		when(service.findById(1L)).thenReturn(Optional.of(dentist));
+		
+		doThrow(ResourceAccessException.class).when(service).delete(dentist);
+		
+		mockMvc.perform(delete("/dentist/delete/1"))
+		.andExpect(status().isServiceUnavailable());
 	}
 	
 	@Test

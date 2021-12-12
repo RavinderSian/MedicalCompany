@@ -10,11 +10,14 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.ResourceAccessException;
 
 import com.personal.medical.model.Dentist;
 import com.personal.medical.services.DentistService;
 
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 @RestController
 @RequestMapping("dentist/")
 public class DentistController implements CrudController<Dentist, Long>{
@@ -36,9 +39,15 @@ public class DentistController implements CrudController<Dentist, Long>{
 	public ResponseEntity<?> deleteById(Long id) {
 		
 		if (service.findById(id).isPresent()) {
-			service.delete(service.findById(id).get());
+			try {
+				service.delete(service.findById(id).get());
+			}catch(ResourceAccessException exception) {
+				log.info("Appointments application is not accessible");
+				return new ResponseEntity<>(HttpStatus.SERVICE_UNAVAILABLE);
+			}
 			return new ResponseEntity<>(HttpStatus.OK);
-		} return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		} 
+		return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		
 	}
 

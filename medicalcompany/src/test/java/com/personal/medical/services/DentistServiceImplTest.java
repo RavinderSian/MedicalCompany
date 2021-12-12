@@ -85,7 +85,22 @@ class DentistServiceImplTest {
 		
 		service.delete(dentist);
 		mockServer.verify();
-
+	}
+	
+	@Test
+	void test_Delete_ThrowsConnectException_WhenAppointmentsIsDown() {
+		
+		Dentist dentist = new Dentist();
+		dentist.setId(1L);
+		
+		mockServer.expect(ExpectedCount.once(), 
+		          requestTo("http://localhost:8081/dentalappointments/delete/dentist/" + dentist.getId()))
+		          .andExpect(method(HttpMethod.DELETE))
+		          .andRespond(withStatus(HttpStatus.OK)
+		        );
+		
+		service.delete(dentist);
+		mockServer.verify();
 	}
 
 }
