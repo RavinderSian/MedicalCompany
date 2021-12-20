@@ -155,766 +155,771 @@
 			]
 		},
 		{
-			"name": "Dental Patient",
+			"name": "Main Application",
 			"item": [
 				{
-					"name": "Save Dental Patient",
-					"request": {
-						"method": "PUT",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"firstName\":\"ok\",\r\n    \"lastName\":\"test\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
+					"name": "Dental Patient",
+					"item": [
+						{
+							"name": "Save Dental Patient",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"firstName\":\"ok\",\r\n    \"lastName\":\"test\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8080/dentalpatient/save",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"dentalpatient",
+										"save"
+									]
 								}
-							}
+							},
+							"response": []
 						},
-						"url": {
-							"raw": "localhost:8080/dentalpatient/save",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"dentalpatient",
-								"save"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Get Dental Patient By Id",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "localhost:8080/dentalpatient/1",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"dentalpatient",
-								"1"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Delete Dental Patient By Id",
-					"request": {
-						"method": "DELETE",
-						"header": [],
-						"url": {
-							"raw": "localhost:8080/dentalpatient/delete/1",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"dentalpatient",
-								"delete",
-								"1"
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "Dental Hygienist",
-			"item": [
-				{
-					"name": "Save Dental Hygienist",
-					"request": {
-						"method": "PUT",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"firstName\":\"ok\",\r\n    \"lastName\":\"test\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
+						{
+							"name": "Get Dental Patient",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/dentalpatient/1",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"dentalpatient",
+										"1"
+									]
 								}
-							}
+							},
+							"response": []
 						},
-						"url": {
-							"raw": "localhost:8080/hygienist/save",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"hygienist",
-								"save"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Get Dental Hygienist",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "localhost:8080/hygienist/1",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"hygienist",
-								"1"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Delete Dental Hygienist",
-					"request": {
-						"method": "DELETE",
-						"header": [],
-						"url": {
-							"raw": "localhost:8080/hygienist/delete/1",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"hygienist",
-								"delete",
-								"1"
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "Doctor",
-			"item": [
-				{
-					"name": "Save Doctor",
-					"request": {
-						"method": "PUT",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"firstName\":\"ok\",\r\n    \"lastName\":\"test\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
+						{
+							"name": "Delete Dental Patient",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/dentalpatient/delete/1",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"dentalpatient",
+										"delete",
+										"1"
+									]
 								}
-							}
-						},
-						"url": {
-							"raw": "localhost:8080/doctor/save",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"doctor",
-								"save"
-							]
+							},
+							"response": []
 						}
-					},
-					"response": []
+					]
 				},
 				{
-					"name": "Get Doctor By Id",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "localhost:8080/doctor/1",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"doctor",
-								"1"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Delete Doctor By Id",
-					"request": {
-						"method": "DELETE",
-						"header": [],
-						"url": {
-							"raw": "localhost:8080/doctor/delete/1",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"doctor",
-								"delete",
-								"1"
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "Dentist",
-			"item": [
-				{
-					"name": "Save Dentist",
-					"request": {
-						"method": "PUT",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"firstName\":\"ok\",\r\n    \"lastName\":\"test\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
+					"name": "Dental Hygienist",
+					"item": [
+						{
+							"name": "Save Dental Hygienist",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"firstName\":\"ok\",\r\n    \"lastName\":\"test\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8080/hygienist/save",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"hygienist",
+										"save"
+									]
 								}
-							}
+							},
+							"response": []
 						},
-						"url": {
-							"raw": "localhost:8080/dentist/save",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"dentist",
-								"save"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Get Dentist By Id",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "localhost:8080/dentist/1",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"dentist",
-								"1"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Delete Dentist By Id",
-					"request": {
-						"method": "DELETE",
-						"header": [],
-						"url": {
-							"raw": "localhost:8080/dentist/delete/1",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"dentist",
-								"delete",
-								"1"
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "Patient",
-			"item": [
-				{
-					"name": "Save Patient",
-					"request": {
-						"method": "PUT",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"firstName\":\"ok\",\r\n    \"lastName\":\"test\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
+						{
+							"name": "Get Dental Hygienist",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/hygienist/1",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"hygienist",
+										"1"
+									]
 								}
-							}
+							},
+							"response": []
 						},
-						"url": {
-							"raw": "localhost:8080/patient/save",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"patient",
-								"save"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Get Patient By Id",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "localhost:8080/patient/1",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"patient",
-								"1"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Update Patient First Name",
-					"request": {
-						"method": "PATCH",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "testing",
-							"options": {
-								"raw": {
-									"language": "text"
+						{
+							"name": "Delete Dental Hygienist",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/hygienist/delete/1",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"hygienist",
+										"delete",
+										"1"
+									]
 								}
-							}
-						},
-						"url": {
-							"raw": "localhost:8080/patient/1/updatefirstname",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"patient",
-								"1",
-								"updatefirstname"
-							]
+							},
+							"response": []
 						}
-					},
-					"response": []
+					]
 				},
 				{
-					"name": "Delete Patient By Id",
-					"request": {
-						"method": "DELETE",
-						"header": [],
-						"url": {
-							"raw": "localhost:8080/patient/delete/1",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"patient",
-								"delete",
-								"1"
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "Medicine",
-			"item": [
-				{
-					"name": "addMedicine",
-					"request": {
-						"method": "PUT",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"name\":\"ok\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
+					"name": "Doctor",
+					"item": [
+						{
+							"name": "Save Doctor",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"firstName\":\"ok\",\r\n    \"lastName\":\"test\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8080/doctor/save",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"doctor",
+										"save"
+									]
 								}
-							}
+							},
+							"response": []
 						},
-						"url": {
-							"raw": "localhost:8080/medicine/save",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"medicine",
-								"save"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "getMedicineById",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "localhost:8080/medicine/1",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"medicine",
-								"1"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "updateName",
-					"request": {
-						"method": "PATCH",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "nameisnew",
-							"options": {
-								"raw": {
-									"language": "text"
+						{
+							"name": "Get Doctor By Id",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/doctor/1",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"doctor",
+										"1"
+									]
 								}
-							}
+							},
+							"response": []
 						},
-						"url": {
-							"raw": "localhost:8080/medicine/1/updatename",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"medicine",
-								"1",
-								"updatename"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "deleteMedicine",
-					"request": {
-						"method": "DELETE",
-						"header": [],
-						"url": {
-							"raw": "localhost:8080/medicine/delete/1",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"medicine",
-								"delete",
-								"1"
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "Prescription",
-			"item": [
-				{
-					"name": "addPrescription",
-					"request": {
-						"method": "PUT",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
+						{
+							"name": "Delete Doctor By Id",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/doctor/delete/1",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"doctor",
+										"delete",
+										"1"
+									]
 								}
-							}
-						},
-						"url": {
-							"raw": "localhost:8080/prescription/save",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"prescription",
-								"save"
-							]
+							},
+							"response": []
 						}
-					},
-					"response": []
+					]
 				},
 				{
-					"name": "getPrescriptionById",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "localhost:8080/prescription/1",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"prescription",
-								"1"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "deletePrescription",
-					"request": {
-						"method": "DELETE",
-						"header": [],
-						"url": {
-							"raw": "localhost:8080/prescription/delete/1",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"prescription",
-								"delete",
-								"1"
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "Employee",
-			"item": [
-				{
-					"name": "Save Employee",
-					"request": {
-						"method": "PUT",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"firstName\":\"ok\",\r\n    \"lastName\":\"test\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
+					"name": "Patient",
+					"item": [
+						{
+							"name": "Save Patient",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"firstName\":\"ok\",\r\n    \"lastName\":\"test\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8080/patient/save",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"patient",
+										"save"
+									]
 								}
-							}
+							},
+							"response": []
 						},
-						"url": {
-							"raw": "localhost:8080/employee/save",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"employee",
-								"save"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Get Employee By Id",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "localhost:8080/employee/1",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"employee",
-								"1"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Update Employee First Name",
-					"request": {
-						"method": "PATCH",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "testing",
-							"options": {
-								"raw": {
-									"language": "text"
+						{
+							"name": "Get Patient By Id",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/patient/1",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"patient",
+										"1"
+									]
 								}
-							}
+							},
+							"response": []
 						},
-						"url": {
-							"raw": "localhost:8080/employee/1/updatefirstname",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"employee",
-								"1",
-								"updatefirstname"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Delete Employee",
-					"request": {
-						"method": "DELETE",
-						"header": [],
-						"url": {
-							"raw": "localhost:8080/employee/delete/1",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"employee",
-								"delete",
-								"1"
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "Ingredient",
-			"item": [
-				{
-					"name": "Save Ingredient",
-					"request": {
-						"method": "PUT",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"name\":\"ok\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
+						{
+							"name": "Update Patient First Name",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "testing",
+									"options": {
+										"raw": {
+											"language": "text"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8080/patient/1/updatefirstname",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"patient",
+										"1",
+										"updatefirstname"
+									]
 								}
-							}
+							},
+							"response": []
 						},
-						"url": {
-							"raw": "localhost:8080/ingredient/save",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"ingredient",
-								"save"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Get Ingredient By Id",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "localhost:8080/ingredient/1",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"ingredient",
-								"1"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Update Ingredient First Name",
-					"request": {
-						"method": "PATCH",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "testing",
-							"options": {
-								"raw": {
-									"language": "text"
+						{
+							"name": "Delete Patient By Id",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/patient/delete/1",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"patient",
+										"delete",
+										"1"
+									]
 								}
-							}
-						},
-						"url": {
-							"raw": "localhost:8080/ingredient/1/updatename",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"ingredient",
-								"1",
-								"updatename"
-							]
+							},
+							"response": []
 						}
-					},
-					"response": []
+					]
 				},
 				{
-					"name": "Delete Ingredient",
-					"request": {
-						"method": "DELETE",
-						"header": [],
-						"url": {
-							"raw": "localhost:8080/ingredient/delete/1",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"ingredient",
-								"delete",
-								"1"
-							]
+					"name": "Dentist",
+					"item": [
+						{
+							"name": "Save Dentist",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"firstName\":\"ok\",\r\n    \"lastName\":\"test\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8080/dentist/save",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"dentist",
+										"save"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Dentist By Id",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/dentist/1",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"dentist",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Dentist By Id",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/dentist/delete/1",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"dentist",
+										"delete",
+										"1"
+									]
+								}
+							},
+							"response": []
 						}
-					},
-					"response": []
+					]
+				},
+				{
+					"name": "Medicine",
+					"item": [
+						{
+							"name": "addMedicine",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\":\"ok\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8080/medicine/save",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"medicine",
+										"save"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getMedicineById",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/medicine/1",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"medicine",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "updateName",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "nameisnew",
+									"options": {
+										"raw": {
+											"language": "text"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8080/medicine/1/updatename",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"medicine",
+										"1",
+										"updatename"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "deleteMedicine",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/medicine/delete/1",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"medicine",
+										"delete",
+										"1"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Prescription",
+					"item": [
+						{
+							"name": "addPrescription",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8080/prescription/save",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"prescription",
+										"save"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "getPrescriptionById",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/prescription/1",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"prescription",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "deletePrescription",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/prescription/delete/1",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"prescription",
+										"delete",
+										"1"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Employee",
+					"item": [
+						{
+							"name": "Save Employee",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"firstName\":\"ok\",\r\n    \"lastName\":\"test\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8080/employee/save",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"employee",
+										"save"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Employee By Id",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/employee/1",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"employee",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Employee First Name",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "testing",
+									"options": {
+										"raw": {
+											"language": "text"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8080/employee/1/updatefirstname",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"employee",
+										"1",
+										"updatefirstname"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Employee",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/employee/delete/1",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"employee",
+										"delete",
+										"1"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Ingredient",
+					"item": [
+						{
+							"name": "Save Ingredient",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\":\"ok\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8080/ingredient/save",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"ingredient",
+										"save"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get Ingredient By Id",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/ingredient/1",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"ingredient",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Ingredient First Name",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "testing",
+									"options": {
+										"raw": {
+											"language": "text"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8080/ingredient/1/updatename",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"ingredient",
+										"1",
+										"updatename"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Ingredient",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/ingredient/delete/1",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"ingredient",
+										"delete",
+										"1"
+									]
+								}
+							},
+							"response": []
+						}
+					]
 				}
 			]
 		}
