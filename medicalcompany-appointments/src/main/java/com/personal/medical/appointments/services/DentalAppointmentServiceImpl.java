@@ -12,6 +12,9 @@ import org.springframework.web.client.RestTemplate;
 import com.personal.medical.appointments.model.DentalAppointment;
 import com.personal.medical.appointments.repositories.DentalAppointmentRepository;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 @Service
 public class DentalAppointmentServiceImpl implements DentalAppointmentService {
 	
@@ -62,12 +65,14 @@ public class DentalAppointmentServiceImpl implements DentalAppointmentService {
 		try {
 			restTemplate.exchange("http://localhost:8080/dentalpatient/" + dentalAppointment.getPatientId(), HttpMethod.GET, new HttpEntity<>(null, null), String.class);
 		} catch(HttpClientErrorException.NotFound httpClientErrorException) {
+			log.info("dental patient not found");
 			return false;
 		}
 		
 		try {
 			restTemplate.exchange("http://localhost:8080/dentist/" + dentalAppointment.getDentistId(), HttpMethod.GET, new HttpEntity<>(null, null), String.class);
 		} catch(HttpClientErrorException.NotFound httpClientErrorException) {
+			log.info("dentist not found");
 			return false;
 		}
 		
