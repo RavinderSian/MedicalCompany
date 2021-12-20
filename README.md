@@ -57,12 +57,25 @@ If an entity does not exist for any request a 404 is returned:
 To delete entities by id a DELETE request is used:
 ![](https://github.com/RavinderSian/MedicalCompany/blob/main/screenshots/Delete%20dental%20patient.JPG)
 
+Some entities have PATCH requests for updating certain fields:
+![](https://github.com/RavinderSian/MedicalCompany/blob/main/screenshots/Update%20employee%20name.JPG)
+
 Some endpoints, such as delete endpoints call the other endpoints in the appointments application. 
 If the appointments application is not running a 503 Http status is retured:
 
 ![](https://github.com/RavinderSian/MedicalCompany/blob/main/screenshots/Patient%20delete%20service%20unavailable.JPG)
 
 ## Appointments application endpoints
+The appointments application has requests in a similar format to the main application
+
+For getting entities by id a GET request is available:
+![](https://github.com/RavinderSian/MedicalCompany/blob/main/screenshots/Get%20dental%20appointment.JPG)
+
+If an entity does not exist for any request a 404 is returned:
+![](https://github.com/RavinderSian/MedicalCompany/blob/main/screenshots/Get%20dental%20patient%20not%20found.JPG)
+
+To delete entities by id a DELETE request is used:
+![](https://github.com/RavinderSian/MedicalCompany/blob/main/screenshots/Delete%20dental%20appointment.JPG)
 
 Unlike the main application, in the appointments application if the main application is down when an endpoint is called
 that is in the main application there is an exception, this will be handled in future:
