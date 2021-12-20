@@ -72,7 +72,7 @@ For getting entities by id a GET request is available:
 ![](https://github.com/RavinderSian/MedicalCompany/blob/main/screenshots/Get%20dental%20appointment.JPG)
 
 If an entity does not exist for any request a 404 is returned:
-![](https://github.com/RavinderSian/MedicalCompany/blob/main/screenshots/Get%20dental%20patient%20not%20found.JPG)
+![](https://github.com/RavinderSian/MedicalCompany/blob/main/screenshots/Get%20dental%20appointment%20not%20found.JPG)
 
 To delete entities by id a DELETE request is used:
 ![](https://github.com/RavinderSian/MedicalCompany/blob/main/screenshots/Delete%20dental%20appointment.JPG)
