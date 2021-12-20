@@ -43,17 +43,31 @@ Expected output for docker running appointments application:
 
 ## Main application endpoints
 
-Some endpoints call the other endpoints in the appointments application. 
+Each entity has its own set of save, get and delete requests as shown in the image above.
+
+For saving entities a PUT request is available with a JSON body input:
+![](https://github.com/RavinderSian/MedicalCompany/blob/main/screenshots/Save%20dental%20patient.JPG)
+
+For getting entities by id a GET request is available:
+![](https://github.com/RavinderSian/MedicalCompany/blob/main/screenshots/Get%20dental%20patient.JPG)
+
+If an entity does not exist for any request a 404 is returned:
+![](https://github.com/RavinderSian/MedicalCompany/blob/main/screenshots/Get%20dental%20patient%20not%20found.JPG)
+
+To delete entities by id a DELETE request is used:
+![](https://github.com/RavinderSian/MedicalCompany/blob/main/screenshots/Delete%20dental%20patient.JPG)
+
+Some endpoints, such as delete endpoints call the other endpoints in the appointments application. 
 If the appointments application is not running a 503 Http status is retured:
 
 ![](https://github.com/RavinderSian/MedicalCompany/blob/main/screenshots/Patient%20delete%20service%20unavailable.JPG)
 
 ## Appointments application endpoints
 
-Each entity has its own set of save, get and delete requests as shown in the image above.
-
-
 Unlike the main application, in the appointments application if the main application is down when an endpoint is called
 that is in the main application there is an exception, this will be handled in future:
 
 ![](https://github.com/RavinderSian/MedicalCompany/blob/main/screenshots/Save%20dental%20appointment%20connection%20refused.JPG)
+
+If a dentist or dental patient does not exist for a dental appointment or a doctor or patient does not exist for a doctor appointment a 404 is returned:
+![](https://github.com/RavinderSian/MedicalCompany/blob/main/screenshots/Save%20dental%20appointment%20not%20found.JPG)
