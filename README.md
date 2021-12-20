@@ -68,6 +68,9 @@ If the appointments application is not running a 503 Http status is retured:
 ## Appointments application endpoints
 The appointments application has requests in a similar format to the main application
 
+For saving entities a PUT request is available with a JSON body input:
+![](https://github.com/RavinderSian/MedicalCompany/blob/main/screenshots/Save%20dental%20appointment.JPG)
+
 For getting entities by id a GET request is available:
 ![](https://github.com/RavinderSian/MedicalCompany/blob/main/screenshots/Get%20dental%20appointment.JPG)
 
