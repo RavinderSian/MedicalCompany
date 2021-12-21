@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.ResourceAccessException;
 
 import com.personal.medical.appointments.model.DoctorAppointment;
 import com.personal.medical.appointments.services.DoctorAppointmentService;
@@ -43,8 +44,12 @@ public class DoctorAppointmentController implements CrudController<DoctorAppoint
 	@Override
 	public ResponseEntity<?> add(DoctorAppointment doctorAppointment, BindingResult bindingResult) {
 		
-		if(!service.checkIfPatientOrDoctorExists(doctorAppointment)) {
-			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		try {
+			if (!service.checkIfPatientOrDoctorExists(doctorAppointment)) {
+				return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+			}	
+		}catch (ResourceAccessException exception) {
+			return new ResponseEntity<>(HttpStatus.SERVICE_UNAVAILABLE);
 		}
 		
 		if (bindingResult.hasFieldErrors()) {
