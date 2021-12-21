@@ -21,6 +21,7 @@ import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.web.client.ResourceAccessException;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.personal.medical.appointments.model.DoctorAppointment;
@@ -118,6 +119,22 @@ class DoctorAppointmentControllerTest {
 	    
 	    mockMvc.perform(put("/doctorappointments/save").contentType(MediaType.APPLICATION_JSON_VALUE).content(mapper.writer().writeValueAsString(appointment)))
 	    	.andExpect(status().isNotFound());
+	}
+	
+	@Test
+	void test_Save_ReturnsCorrectResponse_WhenMainApplicationIsDown() throws Exception {
+		
+		DoctorAppointment appointment = new DoctorAppointment();
+		appointment.setId(1L);
+		appointment.setDescription("test");
+		appointment.setDate(LocalDateTime.of(2020, 1, 2, 5, 6));
+		appointment.setDoctorId(1L);
+		appointment.setPatientId(1L);
+		when(service.save(appointment)).thenReturn(appointment);
+		when(service.checkIfPatientOrDoctorExists(appointment)).thenThrow(ResourceAccessException.class);
+	    
+	    mockMvc.perform(put("/doctorappointments/save").contentType(MediaType.APPLICATION_JSON_VALUE).content(mapper.writer().writeValueAsString(appointment)))
+	    	.andExpect(status().isServiceUnavailable());
 	}
 	
 }
