@@ -80,10 +80,9 @@ If an entity does not exist for any request a 404 is returned:
 To delete entities by id a DELETE request is used:
 ![](https://github.com/RavinderSian/MedicalCompany/blob/main/screenshots/Delete%20dental%20appointment.JPG)
 
-Unlike the main application, in the appointments application if the main application is down when an endpoint is called
-that is in the main application there is an exception, this will be handled in future:
+If the main application is down when an endpoint is called that is in the main application a 503 status is returned:
 
-![](https://github.com/RavinderSian/MedicalCompany/blob/main/screenshots/Save%20dental%20appointment%20connection%20refused.JPG)
+![](https://github.com/RavinderSian/MedicalCompany/blob/main/screenshots/Save%20dental%20appointment%20service%20unavailable.JPG)
 
 If a dentist or dental patient does not exist for a dental appointment or a doctor or patient does not exist for a doctor appointment a 404 is returned:
 ![](https://github.com/RavinderSian/MedicalCompany/blob/main/screenshots/Save%20dental%20appointment%20not%20found.JPG)
